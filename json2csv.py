@@ -13,9 +13,6 @@ data = file.read()
 
 dataByLine = data.split("\n")
 
-for x in dataByLine:
-  print x
-
 file.close()
 
 
@@ -37,6 +34,8 @@ for line in dataByLine:
   lineJSON = json.loads(line)
 
   underscoreID = lineJSON['_id']
+
+
   photoURL = lineJSON['photoURL']
   userBarcode = lineJSON['userBarcode']
   dateCreated = lineJSON['dateCreated']
@@ -78,6 +77,10 @@ for line in dataByLine:
 
     resultsArrayByExperiment.append(row)
   
+  print "headerrrr"
+  
+  print header[0]
+
   resultsArray.append(resultsArrayByExperiment)
 
 csvHeader = ["_id","photoUrl","userBarcode","dateCreated","coloniesCountAtThisTime","IsValid","X","Y","ROI","N_in_clust","Area","Radius","Hue","Saturation","Rmean","Gmean","Bmean","Rsd","Gsd","Bsd","ColorName","NumberOfColoniesThisColor","Rarity"]
@@ -86,8 +89,8 @@ with open(outputname, 'wb') as csvfile:
   csvwriter = csv.writer(csvfile, delimiter=',',
                          quotechar='"', quoting=csv.QUOTE_MINIMAL)
   csvwriter.writerow(csvHeader)
-  for row in resultsArray:
-    for row in resultsArrayByExperiment:
+  for resultsArrayRow in resultsArray:
+    for row in resultsArrayRow:
       csvwriter.writerow(row)
 
 
