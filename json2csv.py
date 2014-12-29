@@ -28,9 +28,6 @@ for line in dataByLine:
   if len(line) < 4:
     continue
   
-#  if x is 0:
-#   print line
-#   x = 1
   lineJSON = json.loads(line)
 
   underscoreID = lineJSON['_id']
@@ -77,10 +74,6 @@ for line in dataByLine:
 
     resultsArrayByExperiment.append(row)
   
-  print "headerrrr"
-  
-  print header[0]
-
   resultsArray.append(resultsArrayByExperiment)
 
 csvHeader = ["_id","photoUrl","userBarcode","dateCreated","coloniesCountAtThisTime","IsValid","X","Y","ROI","N_in_clust","Area","Radius","Hue","Saturation","Rmean","Gmean","Bmean","Rsd","Gsd","Bsd","ColorName","NumberOfColoniesThisColor","Rarity"]
